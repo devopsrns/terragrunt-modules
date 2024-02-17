@@ -19,7 +19,7 @@ resource "aws_subnet" "eks_subnet_private" {
   map_public_ip_on_launch = false
   tags                    = merge(
     {
-      "Name" = "${var.name}-private-${count.index}" 
+      "Name" = "${var.name}-subnet-private-${count.index}" 
     },
     var.tags
   )
