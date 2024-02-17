@@ -2,10 +2,9 @@ resource "aws_vpc" "eks_vpc" {
   cidr_block           = var.cidr_block
   enable_dns_support   = true
   enable_dns_hostnames = true
-  tags = {
-    Name = var.name // Aqui você usa a variável para o nome
-  }
+  tags                 = var.tags // Modificado para usar o mapa de tags
 }
+
 
 resource "aws_subnet" "eks_subnet_private" {
   count                   = length(var.private_subnets_cidr_blocks)
