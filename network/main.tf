@@ -11,8 +11,6 @@ resource "aws_vpc" "eks_vpc" {
   )
 }
 
-
-
 resource "aws_subnet" "eks_subnet_private" {
   count                   = length(var.private_subnets_cidr_blocks)
   vpc_id                  = aws_vpc.eks_vpc.id
