@@ -17,9 +17,12 @@ resource "aws_subnet" "eks_subnet_private" {
   cidr_block              = var.private_subnets_cidr_blocks[count.index]
   availability_zone       = element(var.availability_zones, count.index)
   map_public_ip_on_launch = false
-  tags = {
-    Name = "eks_subnet_private_${count.index}"
-  }
+  tags                    = merge(
+    {
+      "Name" = "${var.name}-private-${count.index}" 
+    },
+    var.tags
+  )
 }
 
 resource "aws_internet_gateway" "eks_igw" {
