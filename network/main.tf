@@ -18,10 +18,11 @@ resource "aws_subnet" "eks_subnet_private" {
   availability_zone       = element(var.availability_zones, count.index)
   map_public_ip_on_launch = false
   tags                    = merge(
+    var.tags,  // Tags gerais
     {
-      "Name" = "${var.name}-subnet-private-${count.index}" 
+      "Name" = "${var.name}-subnet-private-${count.index}"
     },
-    var.tags
+    var.private_subnet_tags  // Tags específicas de subnets privadas
   )
 }
 

@@ -24,3 +24,9 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "private_subnet_tags" {
+  description = "A map of tags to add to private subnets"
+  type        = map(string)
+  default     = {}
+}
