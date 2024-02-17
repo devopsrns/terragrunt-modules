@@ -2,8 +2,14 @@ resource "aws_vpc" "eks_vpc" {
   cidr_block           = var.cidr_block
   enable_dns_support   = true
   enable_dns_hostnames = true
-  tags                 = var.tags // Modificado para usar o mapa de tags
+  tags                 = merge(
+    {
+      "Name" = var.name
+    },
+    var.tags
+  )
 }
+
 
 
 resource "aws_subnet" "eks_subnet_private" {
