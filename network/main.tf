@@ -1,5 +1,5 @@
 resource "aws_vpc" "eks_vpc" {
-  count                = var.create_vpc ? 1 : 0
+ # count                = var.create_vpc ? 1 : 0
   cidr_block           = var.cidr_block
   enable_dns_support   = true
   enable_dns_hostnames = true
